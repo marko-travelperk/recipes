@@ -13,12 +13,10 @@ class RecipeTest(TestCase):
         expected_recipe = {'name':recname, 'procedure':recprocedure, 'id':1,'ingredients': []}
         response = self.client.get('/recipes/')
         self.assertTrue(response.status_code == 200)
-        self.assertDictEqual(response.json().get('results')[0], expected_recipe)
+        self.assertDictEqual(response.json()[0], expected_recipe)
 
         ingredient = Ingredient.objects.create(name="ingredient", recipe=rec)
-        expected_recipe.update('ingredients', [{'id':'1', 'name':'ingredient'}])
+        expected_recipe.update({'ingredients': [{'id':1, 'name':'ingredient'}]})
         response = self.client.get('/recipes/')
         self.assertTrue(response.status_code == 200)
-        self.assertDictEqual(response.json().get('results')[0], expected_recipe)
-
-        putresponse = self.client.put('/recipes/1/')
+        self.assertDictEqual(response.json()[0], expected_recipe)
