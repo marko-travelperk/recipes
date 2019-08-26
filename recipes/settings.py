@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'recipesapp.apps.RecipesappConfig',
-    #'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,3 +128,5 @@ STATIC_URL = '/static/'
 
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+APPEND_SLASH=False

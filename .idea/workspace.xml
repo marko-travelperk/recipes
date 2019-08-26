@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9e03935-6dcc-4601-84e5-bb1d75ff3105" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipesapp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipesapp/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django tests.Test: recipesapp.tests">
+  <component name="RunManager" selected="Django server.recipes">
     <configuration name="Test: recipesapp.tests" type="DjangoTestsConfigurationType" temporary="true">
       <module name="recipes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -231,7 +238,7 @@
       <workItem from="1566231791852" duration="5277000" />
       <workItem from="1566286417876" duration="45000" />
       <workItem from="1566286983825" duration="46261000" />
-      <workItem from="1566489969021" duration="4861000" />
+      <workItem from="1566489969021" duration="8873000" />
     </task>
     <servers />
   </component>
