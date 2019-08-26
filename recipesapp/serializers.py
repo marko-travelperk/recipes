@@ -10,7 +10,7 @@ class IngredientSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class RecipeSerializer(serializers.ModelSerializer):
-    ingredients = IngredientSerializer(allow_empty=True, many=True, required=False)  # , read_only=True)
+    ingredients = IngredientSerializer(allow_empty=True, many=True, required=False)
 
     class Meta:
         model = Recipe
@@ -18,7 +18,7 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         ingredients_data = []
-        if validated_data.__contains__('ingredients'):
+        if 'ingredients' in validated_data.keys():
             ingredients_data = validated_data.pop('ingredients')
 
         recipe = Recipe.objects.create(**validated_data)
@@ -29,37 +29,22 @@ class RecipeSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         ingredients_data = []
 
-        if validated_data.__contains__('ingredients'):
+        if 'ingredients' in validated_data.keys():
             ingredients_data = validated_data.pop('ingredients')
 
-        oldingredients_data = []
-        if hasattr(instance, 'ingredients'):
-            oldingredients_data = instance.ingredients
-
-        oldlist = list(map(lambda x: x.get("name"), oldingredients_data.values()))
-
-        newlist = list(map(lambda x: x.get("name"), ingredients_data))
-
-        removediff = set(oldlist)-set(newlist)
-        print(removediff)
-
-        adddiff = set(newlist) - set(oldlist)
-        print(adddiff)
-
-        print(instance.id)
-
-        if validated_data.__contains__('name'):
+        if 'name' in validated_data.keys():
             instance.name = validated_data.pop('name')
 
-        if validated_data.__contains__('procedure'):
+        if 'procedure' in validated_data.keys():
             instance.procedure = validated_data.pop('procedure')
 
-        for ingredient_data in adddiff:
-            Ingredient.objects.update_or_create(name=ingredient_data, recipe=instance)
+        oldingredients_data = instance.ingredients.values()
+        if oldingredients_data:
+            for oldingredient in oldingredients_data:
+                Ingredient.objects.get(id = oldingredient.get("id")).delete()
 
-        for ingredient_data in removediff:
-            if not self.partial:
-                Ingredient.objects.get(name=ingredient_data, recipe=instance).delete()
+        for ingredient_data in ingredients_data:
+            Ingredient.objects.create(name=ingredient_data.get("name"), recipe=instance)
 
         instance.save()
         return instance
