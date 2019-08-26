@@ -41,10 +41,10 @@ class RecipeSerializer(serializers.ModelSerializer):
         oldingredients_data = instance.ingredients.values()
         if oldingredients_data:
             for oldingredient in oldingredients_data:
-                Ingredient.objects.get(id = oldingredient.get("id")).delete()
+                Ingredient.objects.get(id = oldingredient["id"]).delete()
 
         for ingredient_data in ingredients_data:
-            Ingredient.objects.create(name=ingredient_data.get("name"), recipe=instance)
+            Ingredient.objects.create(name=ingredient_data["name"], recipe=instance)
 
         instance.save()
         return instance
