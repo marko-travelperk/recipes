@@ -20,7 +20,6 @@ from recipesapp import views
 
 router = routers.DefaultRouter()
 router.register(r'recipes', views.RecipeViewSet)
-router.register(r'ingredients', views.IngredientViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

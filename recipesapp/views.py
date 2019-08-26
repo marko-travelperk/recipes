@@ -12,7 +12,3 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if namestart is not None:
             queryset = queryset.filter(name__startswith=namestart)
         return queryset
-
-class IngredientViewSet(viewsets.ModelViewSet):
-    queryset = Ingredient.objects.all()
-    serializer_class = IngredientSerializer
